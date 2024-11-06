@@ -1,0 +1,301 @@
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\bin\Debug\academico.exe.config
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\bin\Debug\academico.exe
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\bin\Debug\academico.pdb
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\bin\Debug\academico.xml
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\obj\Debug\academico.Form1.resources
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\obj\Debug\academico.Resources.resources
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\obj\Debug\academico.exe
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\obj\Debug\academico.xml
+C:\Users\jaider\AppData\Local\Temporary Projects\academico\obj\Debug\academico.pdb
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe.config
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.pdb
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.xml
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.exe
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.xml
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.pdb
+C:\Users\jaider\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Javier Carrrilo\Desktop\academico\academico\bin\Debug\academico.exe.config
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.exe
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.xml
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.pdb
+C:\Users\Javier Carrrilo\Desktop\academico\academico\bin\Debug\academico.exe
+C:\Users\Javier Carrrilo\Desktop\academico\academico\bin\Debug\academico.pdb
+C:\Users\Javier Carrrilo\Desktop\academico\academico\bin\Debug\academico.xml
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Javier Carrrilo\Desktop\academico\academico\obj\Debug\academico.LoginForm2.resources
+\\COORDINACION110\Users\Public\academico\academico\bin\Debug\academico.exe.config
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.exe
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.xml
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.pdb
+\\COORDINACION110\Users\Public\academico\academico\bin\Debug\academico.exe
+\\COORDINACION110\Users\Public\academico\academico\bin\Debug\academico.pdb
+\\COORDINACION110\Users\Public\academico\academico\bin\Debug\academico.xml
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.fmrinputbox.resources
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.Form1.resources
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.Form2.resources
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.Form3.resources
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.LoginForm1.resources
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.LoginForm2.resources
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.Resources.resources
+\\COORDINACION110\Users\Public\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Public\academico\academico\bin\Debug\academico.exe.config
+C:\Users\Public\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\Public\academico\academico\obj\Debug\academico.exe
+C:\Users\Public\academico\academico\obj\Debug\academico.xml
+C:\Users\Public\academico\academico\obj\Debug\academico.pdb
+C:\Users\Public\academico\academico\bin\Debug\academico.exe
+C:\Users\Public\academico\academico\bin\Debug\academico.pdb
+C:\Users\Public\academico\academico\bin\Debug\academico.xml
+C:\Users\Public\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\Public\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\Public\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\Public\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\Public\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Public\academico\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\Public\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\Public\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\bin\Debug\academico.exe.config
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.exe
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.xml
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.pdb
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\bin\Debug\academico.exe
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\bin\Debug\academico.pdb
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\bin\Debug\academico.xml
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-11-17\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\bin\Debug\academico.exe.config
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\bin\Debug\academico.exe
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\bin\Debug\academico.pdb
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\bin\Debug\academico.xml
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.exe
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.xml
+C:\Users\Public\Documents\Academicsoft2015\academico-2015-12-06\academico\academico\obj\Debug\academico.pdb
+C:\Users\Public\academico (1)\academico\academico\bin\Debug\academico.exe.config
+C:\Users\Public\academico (1)\academico\academico\bin\Debug\academico.exe
+C:\Users\Public\academico (1)\academico\academico\bin\Debug\academico.pdb
+C:\Users\Public\academico (1)\academico\academico\bin\Debug\academico.xml
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.exe
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.xml
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.pdb
+C:\Users\Public\academico (1)\academico\academico\obj\Debug\academico.FmrZona.resources
+D:\academico\academico\bin\Debug\academico.exe.config
+D:\academico\academico\bin\Debug\academico.exe
+D:\academico\academico\bin\Debug\academico.pdb
+D:\academico\academico\bin\Debug\academico.xml
+D:\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+D:\academico\academico\obj\Debug\academico.fmrinputbox.resources
+D:\academico\academico\obj\Debug\academico.Form1.resources
+D:\academico\academico\obj\Debug\academico.Form2.resources
+D:\academico\academico\obj\Debug\academico.Form3.resources
+D:\academico\academico\obj\Debug\academico.FmrZona.resources
+D:\academico\academico\obj\Debug\academico.LoginForm1.resources
+D:\academico\academico\obj\Debug\academico.LoginForm2.resources
+D:\academico\academico\obj\Debug\academico.Resources.resources
+D:\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+D:\academico\academico\obj\Debug\academico.exe
+D:\academico\academico\obj\Debug\academico.xml
+D:\academico\academico\obj\Debug\academico.pdb
+C:\Users\Public\academico - copia\academico\bin\Debug\academico.exe.config
+C:\Users\Public\academico - copia\academico\bin\Debug\academico.exe
+C:\Users\Public\academico - copia\academico\bin\Debug\academico.pdb
+C:\Users\Public\academico - copia\academico\bin\Debug\academico.xml
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.Form1.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.Form2.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.Form3.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.FmrZona.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.Resources.resources
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.exe
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.xml
+C:\Users\Public\academico - copia\academico\obj\Debug\academico.pdb
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe.config
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.pdb
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.xml
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.FmrZona.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.seguimiento_E_P.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.exe
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.xml
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.pdb
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Modalidad.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe.config
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.pdb
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.xml
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.FmrZona.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Modalidad.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.seguimiento_E_P.resources
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.exe
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.xml
+C:\Users\FUNCIONARIO\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.pdb
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.ProgramasEjecucion.resources
+C:\Users\Administrador\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.GraficaAnmbiente.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe.config
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.pdb
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.xml
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form1.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form2.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form3.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.FmrZona.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.GraficaAnmbiente.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Modalidad.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Resources.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.ProgramasEjecucion.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.seguimiento_E_P.resources
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.exe
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.xml
+C:\Users\khatt\OneDrive\Documentos\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.pdb
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe.config
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.exe
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.pdb
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\bin\Debug\academico.xml
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.fmrinputbox.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form1.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form2.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Form3.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.FmrZona.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.GraficaAnmbiente.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm1.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.LoginForm2.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Modalidad.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.Resources.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.ProgramasEjecucion.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.seguimiento_E_P.resources
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.exe
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.xml
+E:\Coordinacion\Documents\Visual Studio 2012\Projects\academico\academico\obj\Debug\academico.pdb
+D:\programa coordinacion\academico1(1)\academico1\academico\bin\Debug\academico.exe.config
+D:\programa coordinacion\academico1(1)\academico1\academico\bin\Debug\academico.exe
+D:\programa coordinacion\academico1(1)\academico1\academico\bin\Debug\academico.pdb
+D:\programa coordinacion\academico1(1)\academico1\academico\bin\Debug\academico.xml
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.fmrinputbox.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.Form1.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.Form2.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.Form3.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.FmrZona.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.GraficaAnmbiente.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.LoginForm1.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.LoginForm2.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.Modalidad.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.Resources.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.ProgramasEjecucion.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.seguimiento_E_P.resources
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.exe
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.xml
+D:\programa coordinacion\academico1(1)\academico1\academico\obj\Debug\academico.pdb
+D:\programa coordinacion\academico\academico1\academico\bin\Debug\academico.exe.config
+D:\programa coordinacion\academico\academico1\academico\bin\Debug\academico.exe
+D:\programa coordinacion\academico\academico1\academico\bin\Debug\academico.pdb
+D:\programa coordinacion\academico\academico1\academico\bin\Debug\academico.xml
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.fmrinputbox.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.Form1.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.Form2.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.Form3.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.FmrZona.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.GraficaAnmbiente.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.LoginForm1.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.LoginForm2.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.Modalidad.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.Resources.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.ProgramasEjecucion.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.seguimiento_E_P.resources
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.exe
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.xml
+D:\programa coordinacion\academico\academico1\academico\obj\Debug\academico.pdb
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\bin\Debug\academico.exe.config
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\bin\Debug\academico.exe
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\bin\Debug\academico.pdb
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\bin\Debug\academico.xml
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.vbproj.ResolveComReference.cache
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.fmrinputbox.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.Form1.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.Form2.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.Form3.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.FmrZona.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.GraficaAnmbiente.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.LoginForm1.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.LoginForm2.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.Modalidad.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.Resources.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.ProgramasEjecucion.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.seguimiento_E_P.resources
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.vbproj.GenerateResource.Cache
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.exe
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.xml
+C:\Users\AdminSena\Desktop\academico1\academico1\academico\obj\Debug\academico.pdb
