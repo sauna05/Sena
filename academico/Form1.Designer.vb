@@ -388,6 +388,10 @@ Partial Class Form1
         Me.FolderBrowserDialog2 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.lblcorreo = New System.Windows.Forms.Label()
+        Me.Label79 = New System.Windows.Forms.Label()
+        Me.tbHorasRestantes = New System.Windows.Forms.TextBox()
+        Me.Label81 = New System.Windows.Forms.Label()
+        Me.tbtHorasCumplidas = New System.Windows.Forms.TextBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.gbprogcompetencia.SuspendLayout()
@@ -2059,6 +2063,10 @@ Partial Class Form1
         '
         'GroupBox7
         '
+        Me.GroupBox7.Controls.Add(Me.Label81)
+        Me.GroupBox7.Controls.Add(Me.tbtHorasCumplidas)
+        Me.GroupBox7.Controls.Add(Me.Label79)
+        Me.GroupBox7.Controls.Add(Me.tbHorasRestantes)
         Me.GroupBox7.Controls.Add(Me.dtfechainicio)
         Me.GroupBox7.Controls.Add(Me.Label78)
         Me.GroupBox7.Controls.Add(Me.txtduracion)
@@ -2106,7 +2114,7 @@ Partial Class Form1
         '
         'dtfechainicio
         '
-        Me.dtfechainicio.Location = New System.Drawing.Point(820, 158)
+        Me.dtfechainicio.Location = New System.Drawing.Point(820, 154)
         Me.dtfechainicio.Name = "dtfechainicio"
         Me.dtfechainicio.Size = New System.Drawing.Size(200, 20)
         Me.dtfechainicio.TabIndex = 32
@@ -3939,6 +3947,46 @@ Partial Class Form1
         Me.lblcorreo.TabIndex = 19
         Me.lblcorreo.Visible = False
         '
+        'Label79
+        '
+        Me.Label79.AutoSize = True
+        Me.Label79.Location = New System.Drawing.Point(674, 181)
+        Me.Label79.Name = "Label79"
+        Me.Label79.Size = New System.Drawing.Size(113, 13)
+        Me.Label79.TabIndex = 71
+        Me.Label79.Text = "HORAS RESTANTES"
+        '
+        'tbHorasRestantes
+        '
+        Me.tbHorasRestantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbHorasRestantes.Location = New System.Drawing.Point(672, 200)
+        Me.tbHorasRestantes.Multiline = True
+        Me.tbHorasRestantes.Name = "tbHorasRestantes"
+        Me.tbHorasRestantes.ReadOnly = True
+        Me.tbHorasRestantes.Size = New System.Drawing.Size(129, 30)
+        Me.tbHorasRestantes.TabIndex = 70
+        Me.tbHorasRestantes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label81
+        '
+        Me.Label81.AutoSize = True
+        Me.Label81.Location = New System.Drawing.Point(822, 181)
+        Me.Label81.Name = "Label81"
+        Me.Label81.Size = New System.Drawing.Size(175, 13)
+        Me.Label81.TabIndex = 73
+        Me.Label81.Text = "HORAS ASIGNADAS CUMPLIDAS"
+        '
+        'tbtHorasCumplidas
+        '
+        Me.tbtHorasCumplidas.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbtHorasCumplidas.Location = New System.Drawing.Point(846, 200)
+        Me.tbtHorasCumplidas.Multiline = True
+        Me.tbtHorasCumplidas.Name = "tbtHorasCumplidas"
+        Me.tbtHorasCumplidas.ReadOnly = True
+        Me.tbtHorasCumplidas.Size = New System.Drawing.Size(129, 30)
+        Me.tbtHorasCumplidas.TabIndex = 72
+        Me.tbtHorasCumplidas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4369,5 +4417,9 @@ Partial Class Form1
     Friend WithEvents Label78 As System.Windows.Forms.Label
     Friend WithEvents RegistroHorariosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GenerarCarpetasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Label79 As System.Windows.Forms.Label
+    Friend WithEvents tbHorasRestantes As System.Windows.Forms.TextBox
+    Friend WithEvents Label81 As System.Windows.Forms.Label
+    Friend WithEvents tbtHorasCumplidas As System.Windows.Forms.TextBox
 
 End Class
