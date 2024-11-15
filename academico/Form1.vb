@@ -1794,12 +1794,53 @@ salir:
         End If
 sale:
     End Sub
+    Sub horasRestantes(ByVal nombreInstructor As String)
+
+        Dim sql As String = "SELECT SUM(CAST(p.hora_programada AS FLOAT)) AS Total_Horas_Cumplidas, i.Horas AS Total_Horas_Asignadas FROM  programacion p JOIN  instructores i ON i.NOMBRE_FUNCIONARIO = p.instructor WHERE p.instructor = @Instructor AND YEAR(p.fecha_de_inicio) = YEAR(GETDATE()) GROUP BY i.NOMBRE_FUNCIONARIO, i.Horas;"
+
+        conectado()
+
+        Dim cmd As New SqlCommand(sql, cnn)
+        cmd.Parameters.AddWithValue("@Instructor", nombreInstructor)
+
+        Dim horasRestantes As String = ""
+        Dim horasCumplidas As String = ""
+        Dim totalHoras As String = ""
+
+        reader = cmd.ExecuteReader
+        If (reader.HasRows) Then
+            reader.Read()
+
+            totalHoras = reader("Total_Horas_Asignadas")
+
+            tbtHorasCumplidas.ForeColor = Color.Black
+            horasCumplidas = reader("Total_Horas_Cumplidas").ToString
+
+            tbHorasRestantes.ForeColor = Color.Black
+            horasRestantes = (Integer.Parse(totalHoras) - Integer.Parse(horasCumplidas)).ToString
+
+        Else
+
+            cerrar_conexion()
+            tbHorasRestantes.ForeColor = Color.DarkRed
+            tbtHorasCumplidas.ForeColor = Color.DarkRed
+            horasRestantes = "Error"
+            horasCumplidas = "Error"
+           
+
+           
+        End If
+        tbHorasRestantes.Text = horasRestantes
+        tbtHorasCumplidas.Text = horasCumplidas
+
+    End Sub
 
     Sub selecciona1()
         Dim FILA As Integer = Dtginstructor.CurrentRow.Index.ToString
 
         txtcedula.Text = Dtginstructor.Rows(FILA).Cells(0).Value.ToString()
         txtnombrefuncionario.Text = Dtginstructor.Rows(FILA).Cells(1).Value.ToString()
+        horasRestantes(txtnombrefuncionario.Text)
         Cbvinculacion.Text = Dtginstructor.Rows(FILA).Cells(2).Value.ToString()
         Cbzona.Text = Dtginstructor.Rows(FILA).Cells(3).Value.ToString()
         txtemail.Text = Dtginstructor.Rows(FILA).Cells(4).Value.ToString()
