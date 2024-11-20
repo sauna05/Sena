@@ -206,6 +206,10 @@ Partial Class Form1
         Me.Rdbtnbuscar_nombre = New System.Windows.Forms.RadioButton()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Label81 = New System.Windows.Forms.Label()
+        Me.tbtHorasCumplidas = New System.Windows.Forms.TextBox()
+        Me.Label79 = New System.Windows.Forms.Label()
+        Me.tbHorasRestantes = New System.Windows.Forms.TextBox()
         Me.dtfechainicio = New System.Windows.Forms.DateTimePicker()
         Me.Label78 = New System.Windows.Forms.Label()
         Me.txtduracion = New System.Windows.Forms.TextBox()
@@ -388,10 +392,7 @@ Partial Class Form1
         Me.FolderBrowserDialog2 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.lblcorreo = New System.Windows.Forms.Label()
-        Me.Label79 = New System.Windows.Forms.Label()
-        Me.tbHorasRestantes = New System.Windows.Forms.TextBox()
-        Me.Label81 = New System.Windows.Forms.Label()
-        Me.tbtHorasCumplidas = New System.Windows.Forms.TextBox()
+        Me.btnAsistencias = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.gbprogcompetencia.SuspendLayout()
@@ -2111,6 +2112,46 @@ Partial Class Form1
         Me.GroupBox7.TabIndex = 2
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Programacion"
+        '
+        'Label81
+        '
+        Me.Label81.AutoSize = True
+        Me.Label81.Location = New System.Drawing.Point(822, 181)
+        Me.Label81.Name = "Label81"
+        Me.Label81.Size = New System.Drawing.Size(175, 13)
+        Me.Label81.TabIndex = 73
+        Me.Label81.Text = "HORAS ASIGNADAS CUMPLIDAS"
+        '
+        'tbtHorasCumplidas
+        '
+        Me.tbtHorasCumplidas.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbtHorasCumplidas.Location = New System.Drawing.Point(846, 200)
+        Me.tbtHorasCumplidas.Multiline = True
+        Me.tbtHorasCumplidas.Name = "tbtHorasCumplidas"
+        Me.tbtHorasCumplidas.ReadOnly = True
+        Me.tbtHorasCumplidas.Size = New System.Drawing.Size(129, 30)
+        Me.tbtHorasCumplidas.TabIndex = 72
+        Me.tbtHorasCumplidas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label79
+        '
+        Me.Label79.AutoSize = True
+        Me.Label79.Location = New System.Drawing.Point(674, 181)
+        Me.Label79.Name = "Label79"
+        Me.Label79.Size = New System.Drawing.Size(113, 13)
+        Me.Label79.TabIndex = 71
+        Me.Label79.Text = "HORAS RESTANTES"
+        '
+        'tbHorasRestantes
+        '
+        Me.tbHorasRestantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbHorasRestantes.Location = New System.Drawing.Point(672, 200)
+        Me.tbHorasRestantes.Multiline = True
+        Me.tbHorasRestantes.Name = "tbHorasRestantes"
+        Me.tbHorasRestantes.ReadOnly = True
+        Me.tbHorasRestantes.Size = New System.Drawing.Size(129, 30)
+        Me.tbHorasRestantes.TabIndex = 70
+        Me.tbHorasRestantes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'dtfechainicio
         '
@@ -3947,45 +3988,14 @@ Partial Class Form1
         Me.lblcorreo.TabIndex = 19
         Me.lblcorreo.Visible = False
         '
-        'Label79
+        'btnAsistencias
         '
-        Me.Label79.AutoSize = True
-        Me.Label79.Location = New System.Drawing.Point(674, 181)
-        Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(113, 13)
-        Me.Label79.TabIndex = 71
-        Me.Label79.Text = "HORAS RESTANTES"
-        '
-        'tbHorasRestantes
-        '
-        Me.tbHorasRestantes.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbHorasRestantes.Location = New System.Drawing.Point(672, 200)
-        Me.tbHorasRestantes.Multiline = True
-        Me.tbHorasRestantes.Name = "tbHorasRestantes"
-        Me.tbHorasRestantes.ReadOnly = True
-        Me.tbHorasRestantes.Size = New System.Drawing.Size(129, 30)
-        Me.tbHorasRestantes.TabIndex = 70
-        Me.tbHorasRestantes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label81
-        '
-        Me.Label81.AutoSize = True
-        Me.Label81.Location = New System.Drawing.Point(822, 181)
-        Me.Label81.Name = "Label81"
-        Me.Label81.Size = New System.Drawing.Size(175, 13)
-        Me.Label81.TabIndex = 73
-        Me.Label81.Text = "HORAS ASIGNADAS CUMPLIDAS"
-        '
-        'tbtHorasCumplidas
-        '
-        Me.tbtHorasCumplidas.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbtHorasCumplidas.Location = New System.Drawing.Point(846, 200)
-        Me.tbtHorasCumplidas.Multiline = True
-        Me.tbtHorasCumplidas.Name = "tbtHorasCumplidas"
-        Me.tbtHorasCumplidas.ReadOnly = True
-        Me.tbtHorasCumplidas.Size = New System.Drawing.Size(129, 30)
-        Me.tbtHorasCumplidas.TabIndex = 72
-        Me.tbtHorasCumplidas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.btnAsistencias.Location = New System.Drawing.Point(1262, 135)
+        Me.btnAsistencias.Name = "btnAsistencias"
+        Me.btnAsistencias.Size = New System.Drawing.Size(75, 23)
+        Me.btnAsistencias.TabIndex = 20
+        Me.btnAsistencias.Text = "Asistencias"
+        Me.btnAsistencias.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -3993,6 +4003,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(1364, 749)
+        Me.Controls.Add(Me.btnAsistencias)
         Me.Controls.Add(Me.lblcorreo)
         Me.Controls.Add(Me.lbltipousuario)
         Me.Controls.Add(Me.lbliduserLogin)
@@ -4421,5 +4432,6 @@ Partial Class Form1
     Friend WithEvents tbHorasRestantes As System.Windows.Forms.TextBox
     Friend WithEvents Label81 As System.Windows.Forms.Label
     Friend WithEvents tbtHorasCumplidas As System.Windows.Forms.TextBox
+    Friend WithEvents btnAsistencias As System.Windows.Forms.Button
 
 End Class

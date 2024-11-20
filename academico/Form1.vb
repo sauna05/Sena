@@ -91,30 +91,32 @@ salir:
             cerrar_conexion()
 
 
-
-
             cuenta_filas = DataGridView1.RowCount.ToString
-            Dim i As Integer
-            For i = 0 To cuenta_filas - 1
+            For i As Integer = 0 To cuenta_filas - 1
+
+                DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.White
+
                 If DataGridView1.Rows(i).Cells("iniciada").Value Then
                     DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.Yellow
                 End If
-            Next
 
-            For i = 0 To cuenta_filas - 1
-                If DataGridView1.Rows(i).Cells("terminada").Value Then
-                    DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.Red
-                    If IsDBNull(DataGridView1.Rows(i).Cells("Evaluado").Value) Then
 
-                    Else
+                If Not IsDBNull(DataGridView1.Rows(i).Cells("fecha_de_terminacion").Value) Then
+                    Dim fecha_terminacion As DateTime = DataGridView1.Rows(i).Cells("fecha_de_terminacion").Value
 
-                        If DataGridView1.Rows(i).Cells("Evaluado").Value Then
-                            DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.Green
-                        End If
-
+                    If fecha_terminacion < DateTime.Now Then
+                        DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.Red
                     End If
                 End If
+
+               
+
+                If Not IsDBNull(DataGridView1.Rows(i).Cells("Evaluado").Value) Then
+                    DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.Green
+                End If
+
             Next
+
 
 
 
