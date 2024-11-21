@@ -6,34 +6,6 @@ Public Class Ambientes
         LlenarCombo()
     End Sub
 
-    Sub LlenarDataGrid()
-        Dim sql As String = " SELECT instructor, ambiente_lunes AS Ambiente,  CONCAT(hlunes_iniciada, ' - ', hlunes_terminada) AS Lunes, CONCAT(hmartes_iniciada, ' - ', hmartes_terminada) AS Martes, CONCAT(hmiercoles_iniciada, ' - ', hmiercoles_terminada) AS Miercoles,CONCAT(hjueves_iniciada, ' - ', hjueves_terminada) AS Martes, CONCAT(hviernes_iniciada, ' - ', hviernes_terminada) AS Viernes, CONCAT(hsabado_iniciada, ' - ', hsabado_terminada) AS Sabado, CONCAT(hdomingo_iniciada, ' - ', hdomingo_terminada) AS Domingo,fecha_de_inicio, fecha_de_terminacion  from programacion where instructor is not null and ambiente_lunes = '@Ambiente'  and fecha_de_inicio <= @Fecha and fecha_de_terminacion >= @Fecha "
-
-        conectado()
-
-
-        Dim cmd As New SqlCommand(sql, cnn)
-        cmd.Parameters.AddWithValue("@Ambiente", "")
-
-        Dim horasRestantes As String = ""
-        Dim horasCumplidas As String = ""
-        Dim totalHoras As String = ""
-
-        reader = cmd.ExecuteReader
-        If (reader.HasRows) Then
-            reader.Read()
-
-            totalHoras = reader("Total_Horas_Asignadas")
-
-            'tbtHorasCumplidas.ForeColor = Color.Black
-            horasCumplidas = reader("Total_Horas_Cumplidas").ToString
-
-            'tbHorasRestantes.ForeColor = Color.Black
-            horasRestantes = (Integer.Parse(totalHoras) - Integer.Parse(horasCumplidas)).ToString
-        End If
-
-    End Sub
-
     Sub LlenarCombo()
         Dim sql As String = "SELECT ambiente FROM ambientes ORDER BY ambiente"
 

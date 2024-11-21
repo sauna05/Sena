@@ -1175,6 +1175,9 @@ salir:
 
     Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
         dias_no_habil = ""
+        If txthoras_programar.Text = "" Then
+            MessageBox.Show("INGRESE LA CANTIDAD DE HORAS A PROGRAMAR")
+        End If
         Dim horas_a_programar As Integer = txthoras_programar.Text
         Dim fecha_de_inicio As Date = Dtpfechadeinicio.Value.Date
         Dim fecha_de_fin_compe As Date
@@ -4900,5 +4903,12 @@ salir:
 
     Private Sub btnAmbientes_Click(sender As Object, e As EventArgs) Handles btnAmbientes.Click
         Ambientes.Show()
+    End Sub
+
+    Private Sub btnPrueba_Click(sender As Object, e As EventArgs) Handles btnPrueba.Click
+        Dim emisor As String = "cordinacionagroempresarial@gmail.com"
+        Dim pass As String = "gtkpfeyahjkgjnyr"
+
+        enviarCorreo(emisor, pass, "Hola Marlon", "Si se pudo, Marlon", "robindannjf@gmail.com", "")
     End Sub
 End Class

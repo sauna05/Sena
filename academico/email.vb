@@ -24,8 +24,6 @@ Module email
                 correos.Attachments.Add(archivo)
             End If
         
-
-
             correos.From = New MailAddress(emisor)
             envios.Credentials = New NetworkCredential(emisor, password)
 
@@ -43,5 +41,7 @@ Module email
         End Try
 
     End Sub
+
+
 
 End Module
