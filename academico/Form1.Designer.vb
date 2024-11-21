@@ -393,6 +393,7 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.lblcorreo = New System.Windows.Forms.Label()
         Me.btnAsistencias = New System.Windows.Forms.Button()
+        Me.btnAmbientes = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.gbprogcompetencia.SuspendLayout()
@@ -3997,12 +3998,22 @@ Partial Class Form1
         Me.btnAsistencias.Text = "Asistencias"
         Me.btnAsistencias.UseVisualStyleBackColor = True
         '
+        'btnAmbientes
+        '
+        Me.btnAmbientes.Location = New System.Drawing.Point(1262, 185)
+        Me.btnAmbientes.Name = "btnAmbientes"
+        Me.btnAmbientes.Size = New System.Drawing.Size(75, 23)
+        Me.btnAmbientes.TabIndex = 21
+        Me.btnAmbientes.Text = "Ambientes"
+        Me.btnAmbientes.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(1364, 749)
+        Me.Controls.Add(Me.btnAmbientes)
         Me.Controls.Add(Me.btnAsistencias)
         Me.Controls.Add(Me.lblcorreo)
         Me.Controls.Add(Me.lbltipousuario)
@@ -4433,5 +4444,6 @@ Partial Class Form1
     Friend WithEvents Label81 As System.Windows.Forms.Label
     Friend WithEvents tbtHorasCumplidas As System.Windows.Forms.TextBox
     Friend WithEvents btnAsistencias As System.Windows.Forms.Button
+    Friend WithEvents btnAmbientes As System.Windows.Forms.Button
 
 End Class

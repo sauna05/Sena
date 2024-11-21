@@ -4897,4 +4897,8 @@ salir:
             End If
         End Try
     End Sub
+
+    Private Sub btnAmbientes_Click(sender As Object, e As EventArgs) Handles btnAmbientes.Click
+        Ambientes.Show()
+    End Sub
 End Class

@@ -94,6 +94,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ambientes.Designer.vb">
+      <DependentUpon>Ambientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ambientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="conexion.vb" />
     <Compile Include="email.vb" />
     <Compile Include="fmrinputbox.Designer.vb">
@@ -181,6 +187,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Ambientes.resx">
+      <DependentUpon>Ambientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fmrinputbox.resx">
       <DependentUpon>fmrinputbox.vb</DependentUpon>
     </EmbeddedResource>
