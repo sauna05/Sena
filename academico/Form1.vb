@@ -4,6 +4,7 @@ Imports System.Data.SqlClient
 Imports System.IO
 Imports Microsoft.Office.Interop
 Imports System.Text.RegularExpressions
+Imports Excel = Microsoft.Office.Interop.Excel
 
 Public Class Form1
     Dim datagrid As String
@@ -109,15 +110,12 @@ salir:
                     End If
                 End If
 
-               
 
                 If Not IsDBNull(DataGridView1.Rows(i).Cells("Evaluado").Value) Then
                     DataGridView1.Rows(i).DefaultCellStyle.BackColor = Color.Green
                 End If
 
             Next
-
-
 
 
         ElseIf datagrid = "competencia" Then
@@ -4826,5 +4824,77 @@ salir:
             MsgBox(ex.ToString)
         End Try
 
+    End Sub
+
+
+    Private Sub btnAsistencias_Click(sender As Object, e As EventArgs) Handles btnAsistencias.Click
+        Try
+            ' Obtener la fecha actual
+            Dim fechaActual As String = DateTime.Now.ToString("yyyy-MM-dd")
+
+            ' Crear DataTable y cargar datos
+            Dim dataTable As New DataTable()
+            Dim sql As String = "SELECT FORMAT(fecha, 'dd/MM/yyyy') AS fecha, u.Nombre, u.Identificacion, " & _
+                                "MIN(CASE WHEN r.Accion = 'Entrada' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraEntrada, " & _
+                                "MAX(CASE WHEN r.Accion = 'Salida' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraSalida, " & _
+                                "CASE WHEN u.Rol LIKE 'APRENDIZ%' THEN 'APRENDIZ' WHEN u.Rol LIKE 'Instructor%' THEN 'Instructor' ELSE u.Rol END AS Rol_persona " & _
+                                "FROM registro r JOIN usuarios u ON r.usuario = u.identificacion " & _
+                                "WHERE CONVERT(DATE, r.Fecha) = @FechaActual " & _
+                                "GROUP BY u.Nombre, u.Identificacion, r.Fecha, u.Rol " & _
+                                "ORDER BY HoraEntrada ASC"
+
+            conectado1()
+
+            Using cmd As New SqlCommand(sql, cnn)
+                cmd.Parameters.AddWithValue("@FechaActual", fechaActual)
+                dataTable.Load(cmd.ExecuteReader())
+            End Using
+
+            ' Crear Excel, escribir datos y guardar
+            Dim excelApp = CreateObject("Excel.Application")
+            Dim workbook = excelApp.Workbooks.Add()
+            Dim worksheet = workbook.Sheets(1)
+
+            ' Escribir encabezados en la primera fila de Excel
+            For col = 0 To dataTable.Columns.Count - 1
+                worksheet.Cells(1, col + 1).Value = dataTable.Columns(col).ColumnName
+            Next
+
+            ' Ajustar el ancho de la columna "Nombre"
+            worksheet.Columns(2).ColumnWidth = 40 ' Ajusta el ancho de la columna "Nombre"
+
+            ' Escribir los datos en Excel
+            For row = 0 To dataTable.Rows.Count - 1
+                For col = 0 To dataTable.Columns.Count - 1
+                    worksheet.Cells(row + 2, col + 1).Value = dataTable.Rows(row)(col).ToString()
+                Next
+            Next
+
+            ' Generar un nombre de archivo único con timestamp
+            Dim timestamp As String = DateTime.Now.ToString("yyyyMMdd_HHmmss")
+            Dim directoryPath As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\AsistenciaDia"
+            Dim filePath As String = Path.Combine(directoryPath, "Datos_Asistencia_" & timestamp & ".xlsx")
+
+            ' Crear la carpeta si no existe
+            If Not Directory.Exists(directoryPath) Then
+                Directory.CreateDirectory(directoryPath)
+            End If
+
+            ' Guardar archivo
+            workbook.SaveAs(filePath)
+            workbook.Close()
+            excelApp.Quit()
+
+            ' Abrir el archivo generado
+            Process.Start(filePath)
+            MessageBox.Show("Archivo Excel generado exitosamente: " & filePath)
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message & vbCrLf & ex.StackTrace)
+        Finally
+            ' Ensure connection is closed
+            If cnn IsNot Nothing AndAlso cnn.State = ConnectionState.Open Then
+                cnn.Close()
+            End If
+        End Try
     End Sub
 End Class
