@@ -4834,19 +4834,60 @@ salir:
 
             ' Crear DataTable y cargar datos
             Dim dataTable As New DataTable()
-            Dim sql As String = "SELECT FORMAT(fecha, 'dd/MM/yyyy') AS fecha, u.Nombre, u.Identificacion, " & _
-                                "MIN(CASE WHEN r.Accion = 'Entrada' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraEntrada, " & _
-                                "MAX(CASE WHEN r.Accion = 'Salida' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraSalida, " & _
-                                "CASE WHEN u.Rol LIKE 'APRENDIZ%' THEN 'APRENDIZ' WHEN u.Rol LIKE 'Instructor%' THEN 'Instructor' ELSE u.Rol END AS Rol_persona " & _
-                                "FROM registro r JOIN usuarios u ON r.usuario = u.identificacion " & _
-                                "WHERE CONVERT(DATE, r.Fecha) = @FechaActual " & _
+            Dim sql As String = "WITH RegistroPorDia AS ( " & _
+                                "    SELECT " & _
+                                "        r.usuario, " & _
+                                "        DATEPART(WEEKDAY, r.Fecha) AS DiaSemana, " & _
+                                "        COUNT(DISTINCT r.usuario) AS CantidadPersonas " & _
+                                "    FROM registro r " & _
+                                "    WHERE r.Fecha >= DATEADD(DAY, -6, GETDATE()) " & _
+                                "      AND r.Fecha < GETDATE() " & _
+                                "    GROUP BY r.usuario, DATEPART(WEEKDAY, r.Fecha) " & _
+                                "), " & _
+                                "ConteoPorDia AS ( " & _
+                                "    SELECT " & _
+                                "        DiaSemana, " & _
+                                "        COUNT(DISTINCT usuario) AS Cantidad " & _
+                                "    FROM RegistroPorDia " & _
+                                "    GROUP BY DiaSemana " & _
+                                ") " & _
+                                "SELECT " & _
+                                "    FORMAT(r.Fecha, 'dd/MM/yyyy') AS fecha, " & _
+                                "    u.Nombre, " & _
+                                "    u.Identificacion, " & _
+                                "    MIN(CASE WHEN r.Accion = 'Entrada' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraEntrada, " & _
+                                "    MAX(CASE WHEN r.Accion = 'Salida' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraSalida, " & _
+                                "    CASE " & _
+                                "        WHEN u.Rol LIKE 'APRENDIZ%' THEN 'APRENDIZ' " & _
+                                "        WHEN u.Rol LIKE 'Instructor%' THEN 'Instructor' " & _
+                                "        WHEN u.Rol LIKE 'INSTRUCTOR%' THEN 'INSTRUCTOR' " & _
+                                "        ELSE u.Rol " & _
+                                "    END AS Rol_persona, " & _
+                                "    (SELECT COALESCE(Cantidad, 0) FROM ConteoPorDia WHERE DiaSemana = 1 AND DiaSemana <= DATEPART(WEEKDAY, GETDATE())) AS Lunes, " & _
+                                "    (SELECT COALESCE(Cantidad, 0) FROM ConteoPorDia WHERE DiaSemana = 2 AND DiaSemana <= DATEPART(WEEKDAY, GETDATE())) AS Martes, " & _
+                                "    (SELECT COALESCE(Cantidad, 0) FROM ConteoPorDia WHERE DiaSemana = 3 AND DiaSemana <= DATEPART(WEEKDAY, GETDATE())) AS Miercoles, " & _
+                                "    (SELECT COALESCE(Cantidad, 0) FROM ConteoPorDia WHERE DiaSemana = 4 AND DiaSemana <= DATEPART(WEEKDAY, GETDATE())) AS Jueves, " & _
+                                "    (SELECT COALESCE(Cantidad, 0) FROM ConteoPorDia WHERE DiaSemana = 5 AND DiaSemana <= DATEPART(WEEKDAY, GETDATE())) AS Viernes, " & _
+                                "    (SELECT COUNT(DISTINCT r2.usuario) " & _
+                                "     FROM registro r2 " & _
+                                "     WHERE CONVERT(DATE, r2.Fecha) = CONVERT(DATE, GETDATE())) AS Cantidad_Hoy, " & _
+                                "    CASE " & _
+                                "        WHEN MIN(CASE WHEN r.Accion = 'Entrada' THEN r.hora END) IS NOT NULL AND " & _
+                                "             MAX(CASE WHEN r.Accion = 'Salida' THEN r.hora END) IS NOT NULL THEN " & _
+                                "            DATEDIFF(SECOND, " & _
+                                "                MIN(CASE WHEN r.Accion = 'Entrada' THEN r.hora END), " & _
+                                "                MAX(CASE WHEN r.Accion = 'Salida' THEN r.hora END)) " & _
+                                "        ELSE NULL " & _
+                                "    END AS Tiempo_en_el_centro " & _
+                                "FROM registro r " & _
+                                "JOIN usuarios u ON r.usuario = u.identificacion " & _
+                                "WHERE CONVERT(DATE, r.Fecha) = CONVERT(DATE, GETDATE()) " & _
                                 "GROUP BY u.Nombre, u.Identificacion, r.Fecha, u.Rol " & _
                                 "ORDER BY HoraEntrada ASC"
 
             conectado1()
 
             Using cmd As New SqlCommand(sql, cnn)
-                cmd.Parameters.AddWithValue("@FechaActual", fechaActual)
                 dataTable.Load(cmd.ExecuteReader())
             End Using
 
@@ -4855,19 +4896,45 @@ salir:
             Dim workbook = excelApp.Workbooks.Add()
             Dim worksheet = workbook.Sheets(1)
 
-            ' Escribir encabezados en la primera fila de Excel
+            ' Escribir los encabezados de las columnas
             For col = 0 To dataTable.Columns.Count - 1
                 worksheet.Cells(1, col + 1).Value = dataTable.Columns(col).ColumnName
             Next
 
-            ' Ajustar el ancho de la columna "Nombre"
-            worksheet.Columns(2).ColumnWidth = 40 ' Ajusta el ancho de la columna "Nombre"
+            ' Configurar el ancho de las columnas
+            worksheet.Columns(2).ColumnWidth = 40
+            worksheet.Columns(6).ColumnWidth = 20
+            worksheet.Columns(13).ColumnWidth = 22
+            worksheet.Columns(12).ColumnWidth = 18
 
-            ' Escribir los datos en Excel
+
+            ' Escribir los valores de asistencia semanal en la segunda fila
+            If dataTable.Rows.Count > 0 Then
+                Dim lunes As Integer = If(dataTable.Rows(0)("Lunes") IsNot DBNull.Value, dataTable.Rows(0)("Lunes"), 0)
+                Dim martes As Integer = If(dataTable.Rows(0)("Martes") IsNot DBNull.Value, dataTable.Rows(0)("Martes"), 0)
+                Dim miercoles As Integer = If(dataTable.Rows(0)("Miercoles") IsNot DBNull.Value, dataTable.Rows(0)("Miercoles"), 0)
+                Dim jueves As Integer = If(dataTable.Rows(0)("Jueves") IsNot DBNull.Value, dataTable.Rows(0)("Jueves"), 0)
+                Dim viernes As Integer = If(dataTable.Rows(0)("Viernes") IsNot DBNull.Value, dataTable.Rows(0)("Viernes"), 0)
+                Dim cantidadPersonasHoy As Integer = If(dataTable.Rows(0)("Cantidad_Hoy") IsNot DBNull.Value, dataTable.Rows(0)("Cantidad_Hoy"), 0)
+
+                worksheet.Cells(2, 7).Value = lunes
+                worksheet.Cells(2, 8).Value = martes
+                worksheet.Cells(2, 9).Value = miercoles
+                worksheet.Cells(2, 10).Value = jueves
+                worksheet.Cells(2, 11).Value = viernes
+                worksheet.Cells(2, 12).Value = cantidadPersonasHoy
+            End If
+
+            ' Escribir los datos de la tabla y convertir tiempo en segundos a hh:mm:ss
             For row = 0 To dataTable.Rows.Count - 1
-                For col = 0 To dataTable.Columns.Count - 1
-                    worksheet.Cells(row + 2, col + 1).Value = dataTable.Rows(row)(col).ToString()
+                For col = 0 To 5
+                    worksheet.Cells(row + 3, col + 1).Value = dataTable.Rows(row)(col).ToString()
                 Next
+
+                ' Obtener el tiempo en el centro en segundos y convertirlo a formato hh:mm:ss
+                Dim tiempoEnCentro As Integer = If(dataTable.Rows(row)("Tiempo_en_el_centro") IsNot DBNull.Value, Convert.ToInt32(dataTable.Rows(row)("Tiempo_en_el_centro")), 0)
+                Dim tiempoFormateado As String = TimeSpan.FromSeconds(tiempoEnCentro).ToString("hh\:mm\:ss")
+                worksheet.Cells(row + 3, 13).Value = tiempoFormateado
             Next
 
             ' Generar un nombre de archivo único con timestamp
@@ -4891,7 +4958,7 @@ salir:
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message & vbCrLf & ex.StackTrace)
         Finally
-            ' Ensure connection is closed
+            ' Asegurar que la conexión se cierre
             If cnn IsNot Nothing AndAlso cnn.State = ConnectionState.Open Then
                 cnn.Close()
             End If
@@ -4902,10 +4969,257 @@ salir:
         Ambientes.Show()
     End Sub
 
-    Private Sub btnPrueba_Click(sender As Object, e As EventArgs) Handles btnPrueba.Click
-        Dim emisor As String = "cordinacionagroempresarial@gmail.com"
-        Dim pass As String = "gtkpfeyahjkgjnyr"
+   
+ 
+    Private Sub btninstr_Click(sender As Object, e As EventArgs) Handles btninstr.Click
+        Try
+            ' Definir el rango de fechas (octubre, noviembre, diciembre 2024)
+            Dim fechaInicio As String = "2024-10-01"
+            Dim fechaFin As String = "2024-12-18"
 
-        enviarCorreo(emisor, pass, "Hola Marlon", "Si se pudo, Marlon", "robindannjf@gmail.com", "")
+            ' Crear DataTable y cargar datos
+            Dim dataTable As New DataTable()
+            Dim sql As String = "SELECT " & _
+                                "    FORMAT(r.Fecha, 'yyyy-MM-dd') AS Fecha, " & _
+                                "    r.usuario, " & _
+                                "    u.Nombre, " & _
+                                "    COUNT(DISTINCT r.usuario) AS CantidadPersonas " & _
+                                "FROM registro r " & _
+                                "JOIN usuarios u ON r.usuario = u.identificacion " & _
+                                "WHERE r.Fecha >= @fechaInicio " & _
+                                "  AND r.Fecha <= @fechaFin " & _
+                                "  AND u.Rol LIKE 'Instructor%' " & _
+                                "GROUP BY FORMAT(r.Fecha, 'yyyy-MM-dd'), r.usuario, u.Nombre " & _
+                                "ORDER BY FORMAT(r.Fecha, 'yyyy-MM-dd') ASC"
+
+            ' Conectar a la base de datos
+            conectado1()
+
+            ' Usar parámetros para evitar inyección SQL
+            Using cmd As New SqlCommand(sql, cnn)
+                cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio)
+                cmd.Parameters.AddWithValue("@fechaFin", fechaFin)
+                dataTable.Load(cmd.ExecuteReader())
+            End Using
+
+            ' Crear Excel, escribir datos y guardar
+            Dim excelApp = CreateObject("Excel.Application")
+            Dim workbook = excelApp.Workbooks.Add()
+            Dim worksheet = workbook.Sheets(1)
+
+            ' Escribir los encabezados de las columnas
+            worksheet.Cells(1, 1).Value = "Semana"
+            worksheet.Cells(1, 2).Value = "Cantidad Instructores que Ingresaron"
+            worksheet.Cells(1, 3).Value = "Instructores"
+
+            ' Escribir los datos en el archivo Excel
+            Dim rowIndex As Integer = 2
+            Dim totalInstructores As Integer = 0
+            Dim lastWeek As Integer = -1  ' Variable para almacenar la semana anterior
+            Dim weekStartDate As Date = Date.MinValue  ' Variable para almacenar el inicio de la semana (lunes)
+            Dim weekEndDate As Date = Date.MinValue    ' Variable para almacenar el fin de la semana (domingo)
+            Dim instructorsPerWeek As New Dictionary(Of Integer, Integer) ' Para almacenar la cantidad de instructores por semana
+
+            ' Recorrer cada fila de datos
+            For row = 0 To dataTable.Rows.Count - 1
+                Dim currentDate As Date = Convert.ToDateTime(dataTable.Rows(row)("Fecha"))
+                Dim currentWeek As Integer = DatePart(DateInterval.WeekOfYear, currentDate)
+
+                ' Si la semana cambia, agregamos una fila vacía y calculamos la cantidad de instructores para la semana
+                If currentWeek <> lastWeek Then
+                    ' Si ya hemos calculado una semana, mostrar la cantidad de instructores de la semana anterior
+                    If lastWeek <> -1 Then
+                        ' Mostrar la cantidad de instructores para la semana anterior
+                        worksheet.Cells(rowIndex, 1).Value = "Semana del " & weekStartDate.ToString("yyyy-MM-dd") & " al " & weekEndDate.ToString("yyyy-MM-dd")
+                        worksheet.Cells(rowIndex, 2).Value = instructorsPerWeek(lastWeek)
+                        rowIndex += 1
+                    End If
+
+                    ' Actualizar las fechas de inicio y fin de la semana
+                    weekStartDate = currentDate.AddDays(-CInt(currentDate.DayOfWeek - 1)) ' Lunes
+                    weekEndDate = weekStartDate.AddDays(6) ' Domingo
+                    lastWeek = currentWeek
+
+                    ' Inicializar contador de instructores para la nueva semana
+                    instructorsPerWeek(lastWeek) = 0
+                End If
+
+                ' Escribir el nombre del instructor y aumentar la cantidad de instructores para esa semana
+                Dim instructorName As String = dataTable.Rows(row)("Nombre").ToString()
+                worksheet.Cells(rowIndex, 3).Value = instructorName
+                instructorsPerWeek(lastWeek) += 1
+
+                rowIndex += 1
+            Next
+
+            ' Agregar la última semana si existe
+            If lastWeek <> -1 Then
+                worksheet.Cells(rowIndex, 1).Value = "Semana del " & weekStartDate.ToString("yyyy-MM-dd") & " al " & weekEndDate.ToString("yyyy-MM-dd")
+                worksheet.Cells(rowIndex, 2).Value = instructorsPerWeek(lastWeek)
+                rowIndex += 1
+            End If
+
+            ' Mostrar el total al final
+            Dim totalRow As Integer = rowIndex
+            worksheet.Cells(totalRow, 1).Value = "Total"
+            worksheet.Cells(totalRow, 2).Value = instructorsPerWeek.Values.Sum() ' Suma de instructores por semana
+
+            ' Configurar el ancho de las columnas
+            worksheet.Columns(1).ColumnWidth = 25
+            worksheet.Columns(2).ColumnWidth = 30
+            worksheet.Columns(3).ColumnWidth = 40
+
+            ' Generar un nombre de archivo único con timestamp
+            Dim timestamp As String = DateTime.Now.ToString("yyyyMMdd_HHmmss")
+            Dim directoryPath As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\AsistenciaInstructores"
+            Dim filePath As String = Path.Combine(directoryPath, "Datos_Asistencia_Instructores_" & timestamp & ".xlsx")
+
+            ' Crear la carpeta si no existe
+            If Not Directory.Exists(directoryPath) Then
+                Directory.CreateDirectory(directoryPath)
+            End If
+
+            ' Guardar archivo
+            workbook.SaveAs(filePath)
+            workbook.Close()
+            excelApp.Quit()
+
+            ' Abrir el archivo generado
+            Process.Start(filePath)
+            MessageBox.Show("Archivo Excel generado exitosamente: " & filePath)
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message & vbCrLf & ex.StackTrace)
+        Finally
+            ' Asegurar que la conexión se cierre
+            If cnn IsNot Nothing AndAlso cnn.State = ConnectionState.Open Then
+                cnn.Close()
+            End If
+        End Try
     End Sub
+
+    Private Sub btntotal_Click(sender As Object, e As EventArgs) Handles btntotal.Click
+        Try
+            ' Definir el rango de fechas (octubre, noviembre, diciembre 2024)
+            Dim fechaInicio As String = "2024-10-01"
+            Dim fechaFin As String = "2024-12-18"
+
+            ' Crear DataTable y cargar datos
+            Dim dataTable As New DataTable()
+            Dim sql As String = "SELECT " & _
+                                "    FORMAT(r.Fecha, 'yyyy-MM-dd') AS Fecha, " & _
+                                "    COUNT(DISTINCT r.usuario) AS CantidadPersonas " & _
+                                "FROM registro r " & _
+                                "WHERE r.Fecha >= @fechaInicio " & _
+                                "  AND r.Fecha <= @fechaFin " & _
+                                "GROUP BY FORMAT(r.Fecha, 'yyyy-MM-dd') " & _
+                                "ORDER BY FORMAT(r.Fecha, 'yyyy-MM-dd') ASC"
+
+            ' Conectar a la base de datos
+            conectado1()
+
+            ' Usar parámetros para evitar inyección SQL
+            Using cmd As New SqlCommand(sql, cnn)
+                cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio)
+                cmd.Parameters.AddWithValue("@fechaFin", fechaFin)
+                dataTable.Load(cmd.ExecuteReader())
+            End Using
+
+            ' Crear Excel, escribir datos y guardar
+            Dim excelApp = CreateObject("Excel.Application")
+            Dim workbook = excelApp.Workbooks.Add()
+            Dim worksheet = workbook.Sheets(1)
+
+            ' Escribir los encabezados de las columnas
+            worksheet.Cells(1, 1).Value = "Fecha"
+            worksheet.Cells(1, 2).Value = "Cantidad Personas que Ingresaron"
+
+            ' Variables para controlar la semana actual
+            Dim rowIndex As Integer = 2
+            Dim totalPersonas As Integer = 0
+            Dim totalPorSemana As Integer = 0
+            Dim lastWeek As Integer = -1
+            Dim weekStartDate As Date = Date.MinValue
+            Dim weekEndDate As Date = Date.MinValue
+
+            ' Recorrer las filas del DataTable
+            For row = 0 To dataTable.Rows.Count - 1
+                Dim currentDate As Date = Convert.ToDateTime(dataTable.Rows(row)("Fecha"))
+                Dim currentWeek As Integer = DatePart(DateInterval.WeekOfYear, currentDate)
+
+                ' Si la semana ha cambiado, agregar una fila vacía y total de la semana anterior
+                If currentWeek <> lastWeek Then
+                    ' Si no es la primera semana, agregar una fila vacía para separar semanas
+                    If lastWeek <> -1 Then
+                        ' Agregar total por semana
+                        worksheet.Cells(rowIndex, 1).Value = "Total Semana"
+                        worksheet.Cells(rowIndex, 2).Value = totalPorSemana
+                        rowIndex += 1 ' Agregar una fila vacía
+                    End If
+
+                    ' Calcular el inicio y fin de la semana
+                    weekStartDate = currentDate.AddDays(-CInt(currentDate.DayOfWeek - 1)) ' Lunes
+                    weekEndDate = weekStartDate.AddDays(6) ' Domingo
+                    lastWeek = currentWeek
+
+                    ' Agregar el encabezado de la semana
+                    worksheet.Cells(rowIndex, 1).Value = "Semana del " & weekStartDate.ToString("yyyy-MM-dd") & " al " & weekEndDate.ToString("yyyy-MM-dd")
+                    worksheet.Cells(rowIndex, 2).Value = "Cantidad de Personas"
+                    rowIndex += 1
+
+                    ' Resetear el total por semana
+                    totalPorSemana = 0
+                End If
+
+                ' Escribir la fecha y la cantidad de personas que ingresaron
+                worksheet.Cells(rowIndex, 1).Value = currentDate.ToString("yyyy-MM-dd")
+                worksheet.Cells(rowIndex, 2).Value = dataTable.Rows(row)("CantidadPersonas")
+                totalPersonas += Convert.ToInt32(dataTable.Rows(row)("CantidadPersonas"))
+                totalPorSemana += Convert.ToInt32(dataTable.Rows(row)("CantidadPersonas"))
+                rowIndex += 1
+            Next
+
+            ' Agregar el total de la última semana
+            worksheet.Cells(rowIndex, 1).Value = "Total Semana"
+            worksheet.Cells(rowIndex, 2).Value = totalPorSemana
+            rowIndex += 1 ' Agregar una fila vacía
+
+            ' Agregar el total final de personas que ingresaron
+            worksheet.Cells(rowIndex, 1).Value = "Total Personas"
+            worksheet.Cells(rowIndex, 2).Value = totalPersonas
+
+            ' Configurar el ancho de las columnas
+            worksheet.Columns(1).ColumnWidth = 15
+            worksheet.Columns(2).ColumnWidth = 25
+
+            ' Generar un nombre de archivo único con timestamp
+            Dim timestamp As String = DateTime.Now.ToString("yyyyMMdd_HHmmss")
+            Dim directoryPath As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\AsistenciaDiaria"
+            Dim filePath As String = Path.Combine(directoryPath, "Datos_Asistencia_" & timestamp & ".xlsx")
+
+            ' Crear la carpeta si no existe
+            If Not Directory.Exists(directoryPath) Then
+                Directory.CreateDirectory(directoryPath)
+            End If
+
+            ' Guardar archivo
+            workbook.SaveAs(filePath)
+            workbook.Close()
+            excelApp.Quit()
+
+            ' Abrir el archivo generado
+            Process.Start(filePath)
+            MessageBox.Show("Archivo Excel generado exitosamente: " & filePath)
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message & vbCrLf & ex.StackTrace)
+        Finally
+            ' Asegurar que la conexión se cierre
+            If cnn IsNot Nothing AndAlso cnn.State = ConnectionState.Open Then
+                cnn.Close()
+            End If
+        End Try
+    End Sub
+
+
+   
+
 End Class

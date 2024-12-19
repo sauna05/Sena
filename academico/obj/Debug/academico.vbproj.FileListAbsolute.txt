@@ -342,3 +342,4 @@ C:\Users\Aprendiz\source\repos\Sena\academico\obj\Debug\academico.exe
 C:\Users\Aprendiz\source\repos\Sena\academico\obj\Debug\academico.xml
 C:\Users\Aprendiz\source\repos\Sena\academico\obj\Debug\academico.pdb
 C:\Users\Aprendiz\Sena\academico\obj\Debug\academico.Ambientes.resources
+C:\Users\Aprendiz\source\repos\Sena\academico\obj\Debug\academico.Ambientes.resources
