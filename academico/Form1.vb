@@ -2118,6 +2118,8 @@ Salir:
         End If
     End Sub
 
+  
+
     Sub enviaficha()
         sql = "Select * from  instructores where NOMBRE_FUNCIONARIO= '" & ComboBox4.Text & "'"
         conectado()
@@ -2133,14 +2135,9 @@ Salir:
         End If
         reader.Close()
 
-
-
-
-      
-
         asunto = "Programacion Docente"
         XLApp = CreateObject("Excel.Application")
-        XLBook = XLApp.Workbooks.Open(My.Computer.FileSystem.CurrentDirectory & "\FICHA2.XLS")
+        XLBook = XLApp.Workbooks.Open("C:\FICHA2.XLS")
         XLSheet = XLBook.Worksheets(1)
         XLSheet.Name = txtficha.Text
         XLApp.Visible = False
@@ -2173,7 +2170,7 @@ Salir:
         cmbhorainicio.SelectedIndex = 0
         cmbhorafin.SelectedIndex = 0
         TextBox1.Text = ""
-           
+
 
         'limpiar_lbl()
         Button11.Enabled = False
