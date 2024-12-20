@@ -4970,27 +4970,71 @@ salir:
     End Sub
 
    
- 
     Private Sub btninstr_Click(sender As Object, e As EventArgs) Handles btninstr.Click
         Try
             ' Definir el rango de fechas (octubre, noviembre, diciembre 2024)
             Dim fechaInicio As String = "2024-10-01"
             Dim fechaFin As String = "2024-12-18"
 
-            ' Crear DataTable y cargar datos
+            ' Crear DataTable y cargar datos con la nueva consulta SQL
             Dim dataTable As New DataTable()
-            Dim sql As String = "SELECT " & _
-                                "    FORMAT(r.Fecha, 'yyyy-MM-dd') AS Fecha, " & _
-                                "    r.usuario, " & _
-                                "    u.Nombre, " & _
-                                "    COUNT(DISTINCT r.usuario) AS CantidadPersonas " & _
-                                "FROM registro r " & _
-                                "JOIN usuarios u ON r.usuario = u.identificacion " & _
-                                "WHERE r.Fecha >= @fechaInicio " & _
-                                "  AND r.Fecha <= @fechaFin " & _
-                                "  AND u.Rol LIKE 'Instructor%' " & _
-                                "GROUP BY FORMAT(r.Fecha, 'yyyy-MM-dd'), r.usuario, u.Nombre " & _
-                                "ORDER BY FORMAT(r.Fecha, 'yyyy-MM-dd') ASC"
+            Dim sql As String = ""
+            sql = "WITH RegistroPorDia AS (" & _
+                  "SELECT " & _
+                  "r.usuario, " & _
+                  "FORMAT(r.Fecha, 'yyyy-MM-dd') AS Fecha, " & _
+                  "DATENAME(WEEKDAY, r.Fecha) AS DiaSemana, " & _
+                  "DATEPART(WEEK, r.Fecha) AS Semana, " & _
+                  "COUNT(DISTINCT r.usuario) AS CantidadPersonas " & _
+                  "FROM " & _
+                  "registro r " & _
+                  "JOIN " & _
+                  "usuarios u ON r.usuario = u.identificacion " & _
+                  "WHERE " & _
+                  "r.Fecha >= @fechaInicio AND r.Fecha <= @fechaFin " & _
+                  "AND u.Rol LIKE 'Instructor%' " & _
+                  "GROUP BY " & _
+                  "r.usuario, r.Fecha, DATENAME(WEEKDAY, r.Fecha), DATEPART(WEEK, r.Fecha) " & _
+                  "), " & _
+                  "ConteoPorSemana AS (" & _
+                  "SELECT " & _
+                  "Semana, " & _
+                  "COUNT(DISTINCT usuario) AS CantidadInstructores " & _
+                  "FROM " & _
+                  "RegistroPorDia " & _
+                  "GROUP BY " & _
+                  "Semana " & _
+                  ") " & _
+                  "SELECT " & _
+                  "FORMAT(r.Fecha, 'yyyy-MM-dd') AS Fecha, " & _
+                  "DATENAME(WEEKDAY, r.Fecha) AS DiaSemana, " & _
+                  "u.Nombre AS NombreInstructor, " & _
+                  "u.Identificacion, " & _
+                  "MIN(CASE WHEN r.Accion = 'Entrada' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraEntrada, " & _
+                  "MAX(CASE WHEN r.Accion = 'Salida' THEN FORMAT(r.hora, 'HH:mm:ss') END) AS HoraSalida, " & _
+                  "CONVERT(VARCHAR, " & _
+                  "DATEADD(SECOND, " & _
+                  "DATEDIFF(SECOND, " & _
+                  "MIN(CASE WHEN r.Accion = 'Entrada' THEN r.hora END), " & _
+                  "MAX(CASE WHEN r.Accion = 'Salida' THEN r.hora END) " & _
+                  "), 0 " & _
+                  "), 108 " & _
+                  ") AS Tiempo_en_el_centro, " & _
+                  "DATEPART(WEEK, r.Fecha) AS Semana, " & _
+                  "(SELECT CantidadInstructores " & _
+                  "FROM ConteoPorSemana " & _
+                  "WHERE ConteoPorSemana.Semana = DATEPART(WEEK, r.Fecha) AND DATENAME(WEEKDAY, r.Fecha) = 'Friday') AS CantidadInstructoresPorSemana " & _
+                  "FROM " & _
+                  "registro r " & _
+                  "JOIN " & _
+                  "usuarios u ON r.usuario = u.identificacion " & _
+                  "WHERE " & _
+                  "r.Fecha >= @fechaInicio AND r.Fecha <= @fechaFin " & _
+                  "AND u.Rol LIKE 'Instructor%' " & _
+                  "GROUP BY " & _
+                  "u.Nombre, u.Identificacion, r.Fecha, DATENAME(WEEKDAY, r.Fecha) " & _
+                  "ORDER BY " & _
+                  "r.Fecha ASC, HoraEntrada ASC"
 
             ' Conectar a la base de datos
             conectado1()
@@ -5008,66 +5052,67 @@ salir:
             Dim worksheet = workbook.Sheets(1)
 
             ' Escribir los encabezados de las columnas
-            worksheet.Cells(1, 1).Value = "Semana"
-            worksheet.Cells(1, 2).Value = "Cantidad Instructores que Ingresaron"
-            worksheet.Cells(1, 3).Value = "Instructores"
+            worksheet.Cells(1, 1).Value = "Fecha"
+            worksheet.Cells(1, 2).Value = "Día de la Semana"
+            worksheet.Cells(1, 3).Value = "Nombre Instructor"
+            worksheet.Cells(1, 4).Value = "Identificación"
+            worksheet.Cells(1, 5).Value = "Hora Entrada"
+            worksheet.Cells(1, 6).Value = "Hora Salida"
+            worksheet.Cells(1, 7).Value = "Tiempo en el Centro"
+            worksheet.Cells(1, 8).Value = "Semana"
+            worksheet.Cells(1, 9).Value = "Cantidad Instructores por Semana"
+
+            ' Crear un diccionario para almacenar los totales por día
+            Dim totalPorDia As New Dictionary(Of String, Integer)
+            Dim rowIndex As Integer = 2
 
             ' Escribir los datos en el archivo Excel
-            Dim rowIndex As Integer = 2
-            Dim totalInstructores As Integer = 0
-            Dim lastWeek As Integer = -1  ' Variable para almacenar la semana anterior
-            Dim weekStartDate As Date = Date.MinValue  ' Variable para almacenar el inicio de la semana (lunes)
-            Dim weekEndDate As Date = Date.MinValue    ' Variable para almacenar el fin de la semana (domingo)
-            Dim instructorsPerWeek As New Dictionary(Of Integer, Integer) ' Para almacenar la cantidad de instructores por semana
-
-            ' Recorrer cada fila de datos
             For row = 0 To dataTable.Rows.Count - 1
-                Dim currentDate As Date = Convert.ToDateTime(dataTable.Rows(row)("Fecha"))
-                Dim currentWeek As Integer = DatePart(DateInterval.WeekOfYear, currentDate)
+                Dim fecha As String = dataTable.Rows(row)("Fecha").ToString()
+                worksheet.Cells(rowIndex, 1).Value = fecha
+                worksheet.Cells(rowIndex, 2).Value = dataTable.Rows(row)("DiaSemana").ToString()
+                worksheet.Cells(rowIndex, 3).Value = dataTable.Rows(row)("NombreInstructor").ToString()
+                worksheet.Cells(rowIndex, 4).Value = dataTable.Rows(row)("Identificacion").ToString()
+                worksheet.Cells(rowIndex, 5).Value = dataTable.Rows(row)("HoraEntrada").ToString()
+                worksheet.Cells(rowIndex, 6).Value = dataTable.Rows(row)("HoraSalida").ToString()
+                worksheet.Cells(rowIndex, 7).Value = dataTable.Rows(row)("Tiempo_en_el_centro").ToString()
+                worksheet.Cells(rowIndex, 8).Value = dataTable.Rows(row)("Semana").ToString()
+                worksheet.Cells(rowIndex, 9).Value = dataTable.Rows(row)("CantidadInstructoresPorSemana").ToString()
 
-                ' Si la semana cambia, agregamos una fila vacía y calculamos la cantidad de instructores para la semana
-                If currentWeek <> lastWeek Then
-                    ' Si ya hemos calculado una semana, mostrar la cantidad de instructores de la semana anterior
-                    If lastWeek <> -1 Then
-                        ' Mostrar la cantidad de instructores para la semana anterior
-                        worksheet.Cells(rowIndex, 1).Value = "Semana del " & weekStartDate.ToString("yyyy-MM-dd") & " al " & weekEndDate.ToString("yyyy-MM-dd")
-                        worksheet.Cells(rowIndex, 2).Value = instructorsPerWeek(lastWeek)
-                        rowIndex += 1
-                    End If
-
-                    ' Actualizar las fechas de inicio y fin de la semana
-                    weekStartDate = currentDate.AddDays(-CInt(currentDate.DayOfWeek - 1)) ' Lunes
-                    weekEndDate = weekStartDate.AddDays(6) ' Domingo
-                    lastWeek = currentWeek
-
-                    ' Inicializar contador de instructores para la nueva semana
-                    instructorsPerWeek(lastWeek) = 0
+                ' Actualizar el total por día
+                If Not totalPorDia.ContainsKey(fecha) Then
+                    totalPorDia(fecha) = 0
                 End If
-
-                ' Escribir el nombre del instructor y aumentar la cantidad de instructores para esa semana
-                Dim instructorName As String = dataTable.Rows(row)("Nombre").ToString()
-                worksheet.Cells(rowIndex, 3).Value = instructorName
-                instructorsPerWeek(lastWeek) += 1
+                totalPorDia(fecha) += 1 ' Incrementar el total por día
 
                 rowIndex += 1
             Next
 
-            ' Agregar la última semana si existe
-            If lastWeek <> -1 Then
-                worksheet.Cells(rowIndex, 1).Value = "Semana del " & weekStartDate.ToString("yyyy-MM-dd") & " al " & weekEndDate.ToString("yyyy-MM-dd")
-                worksheet.Cells(rowIndex, 2).Value = instructorsPerWeek(lastWeek)
-                rowIndex += 1
-            End If
+            ' Escribir el total por día después de cada día de registros
+            For Each dia In totalPorDia
+                Dim fechaFormateada As DateTime = DateTime.Parse(dia.Key)
+                worksheet.Cells(rowIndex, 1).Value = String.Format("Total para {0}:", fechaFormateada.ToString("dddd d MMMM"))
 
-            ' Mostrar el total al final
-            Dim totalRow As Integer = rowIndex
-            worksheet.Cells(totalRow, 1).Value = "Total"
-            worksheet.Cells(totalRow, 2).Value = instructorsPerWeek.Values.Sum() ' Suma de instructores por semana
+                worksheet.Cells(rowIndex, 5).Value = dia.Value
+                rowIndex += 1
+            Next
+
+            ' Escribir el total general al final
+            Dim totalGeneral As Integer = totalPorDia.Values.Sum()
+            worksheet.Cells(rowIndex, 1).Value = "Total General de Instructores:"
+            worksheet.Cells(rowIndex, 5).Value = totalGeneral
+            rowIndex += 1
 
             ' Configurar el ancho de las columnas
-            worksheet.Columns(1).ColumnWidth = 25
-            worksheet.Columns(2).ColumnWidth = 30
-            worksheet.Columns(3).ColumnWidth = 40
+            worksheet.Columns(1).ColumnWidth = 15
+            worksheet.Columns(2).ColumnWidth = 15
+            worksheet.Columns(3).ColumnWidth = 30
+            worksheet.Columns(4).ColumnWidth = 15
+            worksheet.Columns(5).ColumnWidth = 15
+            worksheet.Columns(6).ColumnWidth = 15
+            worksheet.Columns(7).ColumnWidth = 20
+            worksheet.Columns(8).ColumnWidth = 10
+            worksheet.Columns(9).ColumnWidth = 25
 
             ' Generar un nombre de archivo único con timestamp
             Dim timestamp As String = DateTime.Now.ToString("yyyyMMdd_HHmmss")
@@ -5087,6 +5132,7 @@ salir:
             ' Abrir el archivo generado
             Process.Start(filePath)
             MessageBox.Show("Archivo Excel generado exitosamente: " & filePath)
+
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message & vbCrLf & ex.StackTrace)
         Finally
@@ -5096,6 +5142,8 @@ salir:
             End If
         End Try
     End Sub
+
+
 
     Private Sub btntotal_Click(sender As Object, e As EventArgs) Handles btntotal.Click
         Try
